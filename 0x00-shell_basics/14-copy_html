@@ -1,18 +1,2 @@
 #!/bin/bash
-
-# Copy HTML files from current directory to parent directory
-for file in *.HTML; do
-    if [[ -f "../$file" ]]; then
-        current_mtime=$(stat -c %Y "$file")
-        parent_mtime=$(stat -c %Y "../$file")
-        if (( current_mtime > parent_mtime )); then
-            cp "$file" "../$file"
-            echo "Copied $file to ../$file"
-        fi
-    else
-        cp "$file" ".."
-        echo "Copied $file to .."
-    fi
-done
-
-echo "Done"
+cp -rua *.html ../
